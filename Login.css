@@ -59,7 +59,6 @@ button:hover {
 
 span.psw {
     float: right;
-    padding-top: 3px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -68,6 +67,4 @@ span.psw {
         display: block;
         float: none;
     }
-
-   
 }
