@@ -13,14 +13,33 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+//Two functions for this task, temporary solution
 function Form1() {
   var x = document.getElementById("CreateForm");
+  var y = document.getElementById("CreateProjectForm");
   if (x.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "none";
   } else if(x.style.display === "block") {
     x.style.display = "none";
   }
   else{
     x.style.display = "block";
+    y.style.display = "none";
+  }
+}
+
+function Form2() {
+  var x = document.getElementById("CreateProjectForm");
+  var y = document.getElementById("CreateForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+  } else if(x.style.display === "block") {
+    x.style.display = "none";
+  }
+  else{
+    x.style.display = "block";
+    y.style.display = "none";
   }
 }
