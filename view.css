@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: italic;
 }
 
 .dropbtn {
@@ -32,7 +33,9 @@ body {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -40,6 +43,7 @@ body {
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+  transform: scale(1.5);
 <<<<<<< HEAD
 =======
 }
@@ -51,7 +55,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(132, 131, 172);
+  background: linear-gradient(60deg, white, lightblue);
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -74,7 +78,7 @@ body {
 }
 
  .accordion {
-  background-color: #eee;
+  background:linear-gradient(4deg, white, #CCCC);
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -86,12 +90,13 @@ body {
 }
 
 .active, .accordion:hover {
-  background-color: #ccc;
+  background-color: black;
+  transform: scale(1.1);
 }
 
 .panel {
   padding: 0 18px;
-  background-color: white;
+  background-color: #CCCCCC;
   display: none;
   overflow: hidden;
 }
@@ -110,11 +115,18 @@ body {
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
+  background-color: indianred;
   color: white;
   width: 260px;
   padding: 16px 20px;
-  }
+  margin: 10px;
+  
+}
+.open-button:hover {
+    background: red;
+    opacity: 0.5;
+    
+}
 
 /* The popup form - hidden by default */
 .form-popup {
@@ -170,3 +182,7 @@ body {
   opacity: 1;
 >>>>>>> 252074d... popup window
 }
+
+
+
+
