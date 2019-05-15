@@ -16,13 +16,16 @@ MySQL - 5.5.27 : Database - worktracker
 
 DROP DATABASE IF EXISTS worktracker;
 
-
 CREATE DATABASE /*!32312 IF NOT EXISTS*/worktracker /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
 USE worktracker;
 
 
+drop user if exists 'worktrackAdmin'@'localhost';
+
+/* worktrackAdmin käyttäjän luonti  */
 create user 'worktrackAdmin'@'localhost' identified by 'WAdmin';
+
 
 grant select, insert, update, delete on worktracker.* 
 to 'worktrackAdmin'@'localhost';
