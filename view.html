@@ -11,7 +11,7 @@
 <body>
 
 <div class="form-popup" id="CreateForm">
-  <form action="/action_page.php" class="form-container">
+  <form class="form-container">
     <h1>Create New Account</h1>
 
     <label for="useraccount"><b>User Account Name:</b></label>
@@ -23,7 +23,7 @@
 </div>
 
 <div class="form-popup" id="CreateProjectForm">
-    <form action="/action_page.php" class="form-container">
+    <form class="form-container">
       <h1>Create New Project</h1>
   
       <label for="projectname"><b>Project Name:</b></label>
@@ -35,12 +35,11 @@
   </div>
 
 <div class="main">
-    <h2>Placeholder text</h2>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <h2>Your Projects:</h2>
+    <div id="like_button_container"></div>
+    <br>
+    <p>----------------------------</p>
+    <p>No more Projects!</p>
 </div>
 
 <div class="sidenav">
@@ -65,6 +64,10 @@
   <button class="open-button" onclick="Form1()">Add User</button>
 </div>
 
+<!--Load React-->
+<!--when deploying, replace "development.js" with "production.min.js". -->
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 <script src="view.js"></script>
 
 </body>
