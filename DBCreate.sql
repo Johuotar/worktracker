@@ -292,6 +292,64 @@ CREATE TABLE projekti (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table projekti */
+/* 'Tilaaja 1' asiakkaan projektien luonti */
+INSERT INTO projekti(asiakasID, henkiloID, projekti, alkuPvm)
+SELECT a.asiakasID, b.henkiloID, 'Kantayhteys php:lla ja Node.js:lla', current_date
+FROM asiakas a , henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Paavo' and b.Sukunimi='Johtanen'
+;
+
+INSERT INTO projekti(asiakasID, henkiloID, projekti, alkuPvm)
+SELECT a.asiakasID, b.henkiloID, 'WEB sovellus Reactilla', adddate(current_date(), interval 3 day)
+FROM asiakas a , henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Poika' and b.Sukunimi='Johtanen'
+;
+
+INSERT INTO projekti(asiakasID, henkiloID, projekti, alkuPvm)
+SELECT a.asiakasID, b.henkiloID, 'Lämpötila/S.Kosteus WiFi komponentin rakentaminen', adddate(current_date(), interval 3 day)
+FROM asiakas a , henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Poika' and b.Sukunimi='Johtanen'
+;
+
+
+/* 'Hyvä Asiakas' asiakkaan projektien luonti */
+INSERT INTO projekti(asiakasID, henkiloID, projekti, alkuPvm)
+SELECT a.asiakasID, b.henkiloID, 'Lekkimökin rakentaminen kotipihalle', adddate(current_date(), interval 5 day)
+FROM asiakas a , henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Paavo' and b.Sukunimi='Johtanen'
+;
+
+INSERT INTO projekti(asiakasID, henkiloID, projekti, alkuPvm)
+SELECT a.asiakasID, b.henkiloID, 'Kukkien istuttaminen mökin pihalle', adddate(current_date(), interval 6 day)
+FROM asiakas a , henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Pirkka' and b.Sukunimi='Johtanen'
+;
+
+INSERT INTO projekti(asiakasID, henkiloID, projekti, alkuPvm)
+SELECT a.asiakasID, b.henkiloID, 'Heavy kitarointi autotallissa', adddate(current_date(), interval 6 day)
+FROM asiakas a , henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Poika' and b.Sukunimi='Johtanen'
+;
+
+
 
 
 /*Table structure for table projektinTehtava */
@@ -319,7 +377,205 @@ CREATE TABLE projektinTehtava (
   CONSTRAINT fk_prt_henkilo FOREIGN KEY (henkiloID) REFERENCES henkilo (henkiloID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
 /*Data for the table projektinTehtava */
+/* 'Tilaaja 1' asiakas */
+/* 'Kantayhteys php:lla ja Node.js:lla' projektin tehtävät */
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kannan suunnittelu ja toteutus' /* 'Kantayhteys php:lla ja Node.js:lla' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Kantayhteys php:lla ja Node.js:lla'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tirvold' and b.Sukunimi='Tahvinen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kantayhteys php:lla' /* 'Kantayhteys php:lla ja Node.js:lla' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Kantayhteys php:lla ja Node.js:lla'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Travis' and b.Sukunimi='Taravis'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kantayhteys Node.js:lla' /* 'Kantayhteys php:lla ja Node.js:lla' */, adddate(aa.alkuPvm, interval 1 day)
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Kantayhteys php:lla ja Node.js:lla'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Travis' and b.Sukunimi='Taravis'
+;
+
+/* 'WEB sovellus Reactilla' projektin tehtävät */
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kirjautumisikkunan toteutus' /* 'WEB sovellus Reactilla' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='WEB sovellus Reactilla'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Teero' and b.Sukunimi='Tehkijainen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Dashboard ikkunan toteutus' /* 'WEB sovellus Reactilla' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='WEB sovellus Reactilla'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Teero' and b.Sukunimi='Tehkijainen'
+;
+
+/* 'Lämpötila/S.Kosteus WiFi komponentin rakentaminen' projektin tehtävät */
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Mikrokontrollerin ja anturin tilaus' /* 'Lämpötila/S.Kosteus WiFi komponentin rakentaminen' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lämpötila/S.Kosteus WiFi komponentin rakentaminen'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Torvin' and b.Sukunimi='Tirvin'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Komponenttien juottaminen piirilevylle' /* 'Lämpötila/S.Kosteus WiFi komponentin rakentaminen' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lämpötila/S.Kosteus WiFi komponentin rakentaminen'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Torvin' and b.Sukunimi='Tirvin'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Mikrokontollerin ohjelmointi' /* 'Lämpötila/S.Kosteus WiFi komponentin rakentaminen' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lämpötila/S.Kosteus WiFi komponentin rakentaminen'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Torvin' and b.Sukunimi='Tirvin'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Front-end ohjelmointi' /* 'Lämpötila/S.Kosteus WiFi komponentin rakentaminen' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Tilaaja 1' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lämpötila/S.Kosteus WiFi komponentin rakentaminen'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tirvold' and b.Sukunimi='Tahvinen'
+;
+
+
+
+/* 'Hyvä Asiakas' asiakas */
+/* 'Lekkimökin rakentaminen kotipihalle' projektin tehtävät */
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Materiaalien ja instrumenttien hankinta' /* 'Lekkimökin rakentaminen kotipihalle' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lekkimökin rakentaminen kotipihalle'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Teero' and b.Sukunimi='Tehkijainen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Rakennuspaikan valmistelut' /* 'Lekkimökin rakentaminen kotipihalle' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lekkimökin rakentaminen kotipihalle'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Teero' and b.Sukunimi='Tehkijainen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Rakentaminen (muista kahvi- ja olut- tauot)' /* 'Lekkimökin rakentaminen kotipihalle' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Lekkimökin rakentaminen kotipihalle'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Teero' and b.Sukunimi='Tehkijainen'
+;
+
+
+/* 'Kukkien istuttaminen mökin pihalle' projektin tehtävät */
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kukkien hankinta' /* 'Kukkien istuttaminen mökin pihalle' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Kukkien istuttaminen mökin pihalle'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tarja' and b.Sukunimi='Turtunen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kukkien istuttaminen' /* 'Kukkien istuttaminen mökin pihalle' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Kukkien istuttaminen mökin pihalle'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tarja' and b.Sukunimi='Turtunen'
+;
+
+/* 'Heavy kitarointi autotallissa' projektin tehtävät */
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Kitaran, vahvistimien ja kajuttimien hankinta' /* 'Heavy kitarointi autotallissa' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Heavy kitarointi autotallissa'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tirvold' and b.Sukunimi='Tahvinen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Eka oppitunti heavy kitaroinnista' /* 'Heavy kitarointi autotallissa' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Heavy kitarointi autotallissa'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tirvold' and b.Sukunimi='Tahvinen'
+;
+
+INSERT INTO projektinTehtava(asiakasID, projektiID, henkiloID, tehtava, alkuPvm)
+SELECT a.asiakasID, aa.projektiID, b.henkiloID, 'Sulaikkeiden vaihto autotallissa ja talossa' /* 'Heavy kitarointi autotallissa' */, aa.alkuPvm
+FROM asiakas a, projekti aa, henkilo b, asiakas c
+WHERE a.nimi='Hyvä Asiakas' and a.tyyppi='T'
+and c.nimi='worktracker' and c.tyyppi='O'
+and a.asiakasID=aa.asiakasID
+and aa.projekti='Heavy kitarointi autotallissa'
+and b.asiakasID=c.asiakasID
+and b.Etunimi='Tirvold' and b.Sukunimi='Tahvinen'
+;
 
 
 

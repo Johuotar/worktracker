@@ -114,6 +114,45 @@ $result = mysqli_query($mysqli, $sql) or die ("Bad Query: $sql");
     echo("</table> <br> <br>");
     // end of: taulun rakentaminen ja populointi
 
+
+// seuraava looppi
+$sql = "SELECT * FROM projekti";
+
+$result = mysqli_query($mysqli, $sql) or die ("Bad Query: $sql");
+
+    // taulun rakentaminen ja populointi
+    echo("<h3>Asiakkaan projektit </h3>");
+    echo("<table border=2>");
+    /* Get field information for all columns */
+    $finfo = mysqli_fetch_fields($result);
+    foreach ($finfo as $val) {echo ('<th>'.$val->name.'</th>');}
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo ("<tr>");
+        foreach ($finfo as $val) {echo ("<td>{$row[$val->name]}</td>");}
+        echo ("</tr>");
+    }
+    echo("</table> <br> <br>");
+    // end of: taulun rakentaminen ja populointi 
+    
+// seuraava looppi
+$sql = "SELECT * FROM projektinTehtava";
+
+$result = mysqli_query($mysqli, $sql) or die ("Bad Query: $sql");
+
+    // taulun rakentaminen ja populointi
+    echo("<h3>Asiakkaan projektien tehtävät </h3>");
+    echo("<table border=2>");
+    /* Get field information for all columns */
+    $finfo = mysqli_fetch_fields($result);
+    foreach ($finfo as $val) {echo ('<th>'.$val->name.'</th>');}
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo ("<tr>");
+        foreach ($finfo as $val) {echo ("<td>{$row[$val->name]}</td>");}
+        echo ("</tr>");
+    }
+    echo("</table> <br> <br>");
+    // end of: taulun rakentaminen ja populointi      
+
 /* free result set */
 $result->free();
 
