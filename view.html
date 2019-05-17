@@ -44,7 +44,7 @@
     <button class="accordion"><strong>Työntekijät</strong></button>
 <div class="panel">
   <p id="root">Tähän työntekijät tietokannasta</p>
-  <button class="open-button" onclick="Form1()" id="add">Add User</button>
+  <button class="open-button" onclick="Form1()">Add User</button>
 </div>
 
     <button class="accordion"><strong>Projektit</strong></button>
@@ -64,7 +64,7 @@
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = true {
+    this.state = {
       users: [
         {
           username: 'Masa',
@@ -96,9 +96,7 @@ class MyComponent extends React.Component {
   render() {
     const usersOnline = this.state.users.filter(i => i.online == true); // kertoo kuka on onlinessä
     const renderOnline = usersOnline.map((i) => <li key={i.username + 1}>{i.username}</li>); // listaa kaikki käyttäjät
-    const userOn = {
-      
-    }
+  
     return (
        <div>
          <h3>Käytettävissä:</h3>
