@@ -6,12 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
 </head>
 
 <body>
 
 <div class="form-popup" id="CreateForm">
-  <form class="form-container">
+  <form action="/action_page.php" class="form-container">
     <h1>Create New Account</h1>
 
     <label for="useraccount"><b>User Account Name:</b></label>
@@ -22,53 +27,95 @@
   </form>
 </div>
 
-<div class="form-popup" id="CreateProjectForm">
-    <form class="form-container">
-      <h1>Create New Project</h1>
-  
-      <label for="projectname"><b>Project Name:</b></label>
-      <input type="text" placeholder="Enter name" name="name" required>
-  
-      <button type="submit" class="btn">Create new</button>
-      <button type="submit" class="btn cancel" onclick="Form2()">Cancel</button>
-    </form>
-  </div>
-
 <div class="main">
-    <h2>Your Projects:</h2>
-    <div id="projectview"></div>
-    <br>
-    <p>----------------------------</p>
-    <p>No more Projects!</p>
-</div>
+    <h2>Placeholder text</h2>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+  </div>
+ 
 
 <div class="sidenav">
+  
+    <h4 style="margin-left:1em;"><strong></strong>Projektipäällikkö Matti Meikäläinen</strong></h4>
 
-<p style="margin-left:1em;">Projektipäällikkö Matti Meikäläinen</p>
-
-<button class="accordion">Työntekijät</button>
+    <button class="accordion"><strong>Työntekijät</strong></button>
 <div class="panel">
-  <p>Tähän työntekijät tietokannasta</p>
-  <button class="open-button" onclick="Form1()">Add User</button>
+  <p id="root">Tähän työntekijät tietokannasta</p>
+  <button class="open-button" onclick="Form1()" id="add">Add User</button>
 </div>
 
-<button class="accordion">Projektit</button>
+    <button class="accordion"><strong>Projektit</strong></button>
 <div class="panel">
   <p>Esimerkki projekti</p>
-  <button class="open-button" onclick="Form2()">Add Project</button>
+  <button class="open-button" onclick="Form1()">Add Project</button>
 </div>
 
-<button class="accordion">Asiakkaat</button>
+    <button class="accordion"><strong>Asiakkaat</strong></button>
 <div class="panel">
   <p>Esimerkki asiakas</p>
   <button class="open-button" onclick="Form1()">Add User</button>
 </div>
 
-<!--Load React-->
-<!--when deploying, replace "development.js" with "production.min.js". -->
-<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script type="text/babel">
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = true {
+      users: [
+        {
+          username: 'Masa',
+          online: true
+        },
+        {
+          username: 'Jonne',
+          online: false
+        },
+        {
+          username: 'Alpakka',
+          online: true
+        },
+        {
+          username: 'Jake',
+          online: true
+        },
+        {
+          username: 'Sisko',
+          online: true
+        },
+        {
+          username: 'Late',
+          online: true
+        }
+      ]
+    }
+  }
+  render() {
+    const usersOnline = this.state.users.filter(i => i.online == true); // kertoo kuka on onlinessä
+    const renderOnline = usersOnline.map((i) => <li key={i.username + 1}>{i.username}</li>); // listaa kaikki käyttäjät
+    const userOn = {
+      
+    }
+    return (
+       <div>
+         <h3>Käytettävissä:</h3>
+         <ul>
+           {renderOnline}
+         </ul>
+       </div>
+    );
+  }
+};
+
+ReactDOM.render(<MyComponent />, document.getElementById('root'));
+
+</script>
+
 <script src="view.js"></script>
+
 
 </body>
 </html>
