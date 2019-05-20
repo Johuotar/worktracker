@@ -120,7 +120,7 @@
             // $count = mysqli_num_rows($result);
             // echo("Rivimäärä: " . $count);
 
-            $_SESSION['henkilo_ID']=$row['henkiloID'];
+            // $_SESSION['henkilo_ID']=$row['henkiloID'];
 
             echo($row['rooli'] . " "  . $row['sukunimi'] . " " . $row['etunimi']);
 
