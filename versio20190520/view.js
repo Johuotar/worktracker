@@ -48,23 +48,23 @@ function Form2() {
 
 const e = React.createElement;
 
-/*   class LikeButton extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { pressed: false };
-    }
-
-    render() {
-      if (this.state.pressed) {
-        return 'You pressed a button.';
-      }
-
-      return e(
-        'button',
-        { onClick: () => this.setState({ pressed: true }) },
-        'testbutton'
-      );
-    }
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { pressed: false };
   }
-  const domContainer = document.querySelector('#projectview');
-  ReactDOM.render(e(LikeButton), domContainer); */
+
+  render() {
+    if (this.state.pressed) {
+      return 'You pressed a button.';
+    }
+
+    return e(
+      'button',
+      { onClick: () => this.setState({ pressed: true }) },
+      'testbutton'
+    );
+  }
+}
+const domContainer = document.querySelector('#projectview');
+ReactDOM.render(e(LikeButton), domContainer);

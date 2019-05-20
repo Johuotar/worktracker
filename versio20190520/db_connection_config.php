@@ -1,12 +1,11 @@
 <?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
+/* Database credentials. */
 define('DB_SERVER', 'localhost');
-// define('DB_USERNAME', 'worktrackAdmin');
-// define('DB_PASSWORD', 'WAdmin');
-
 define('DB_USERNAME', 'worktrackAdmin');
 define('DB_PASSWORD', 'WAdmin');
+
+// define('DB_USERNAME', 'Admin');
+// define('DB_PASSWORD', 'admin');
 
 define('DB_NAME', 'worktracker');
 

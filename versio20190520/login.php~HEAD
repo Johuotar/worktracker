@@ -12,7 +12,7 @@
       $myusername = mysqli_real_escape_string($mysqli,$_POST['username']);
       $mypassword = mysqli_real_escape_string($mysqli,$_POST['password']);
       
-      $sql = "SELECT kayttajaID FROM kayttaja WHERE kayttajatunnus = '$myusername' and salasana = password('$mypassword')";
+      $sql = "SELECT kayttajaID FROM kayttaja WHERE kayttajatunnus = '.$myusername.' and salasana = '.$mypassword.'";
       $result = mysqli_query($mysqli,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
@@ -22,7 +22,7 @@
 		
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
-         header("location: viewv2.php");
+         header("location: view.php");
       }else {
          //$error = "Your Login Name or Password is invalid";
          header("location: Login.html");
