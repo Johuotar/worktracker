@@ -15,56 +15,17 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-//Two functions for this task, temporary solution
-function Form1() {
-  var x = document.getElementById("CreateForm");
-  var y = document.getElementById("CreateProjectForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    y.style.display = "none";
-  } else if(x.style.display === "block") {
-    x.style.display = "none";
-  }
-  else{
-    x.style.display = "block";
-    y.style.display = "none";
-  }
+function CloseForm(clickedForm) {
+    clickedForm.style.display = "none";
 }
 
-function Form2() {
-  var x = document.getElementById("CreateProjectForm");
-  var y = document.getElementById("CreateForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    y.style.display = "none";
-  } else if(x.style.display === "block") {
-    x.style.display = "none";
+function Form(clickedForm) {
+  if (clickedForm.style.display === "none") {
+    clickedForm.style.display = "block";
+  } else if(clickedForm.style.display === "block") {
+    clickedForm.style.display = "none";
   }
   else{
-    x.style.display = "block";
-    y.style.display = "none";
+    clickedForm.style.display = "block";
   }
 }
-
-const e = React.createElement;
-
-/*   class LikeButton extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { pressed: false };
-    }
-
-    render() {
-      if (this.state.pressed) {
-        return 'You pressed a button.';
-      }
-
-      return e(
-        'button',
-        { onClick: () => this.setState({ pressed: true }) },
-        'testbutton'
-      );
-    }
-  }
-  const domContainer = document.querySelector('#projectview');
-  ReactDOM.render(e(LikeButton), domContainer); */

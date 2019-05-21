@@ -15,15 +15,52 @@
 
 <body>
 
-<div class="form-popup" id="CreateForm">
+<div class="form-popup" id="AddEmployeeForm">
   <form action="/action_page.php" class="form-container">
-    <h1>Create New Account</h1>
+    <h1>Add New Employee Account</h1>
 
-    <label for="useraccount"><b>User Account Name:</b></label>
-    <input type="text" placeholder="Enter account name" name="name" required>
+    <label for="firstname"><b>First Name:</b></label>
+    <input type="text" placeholder="Enter first name" name="firstname" required>
+
+    <label for="lastname"><b>Last Name:</b></label>
+    <input type="text" placeholder="Enter last name" name="lastname" required>
+
+    <label for="accesslevel"><b>Access level:</b></label>
+    <input type="text" placeholder="Access level" name="accesslevel" required>
 
     <button type="submit" class="btn">Create new</button>
-    <button type="submit" class="btn cancel" onclick="Form1()">Cancel</button>
+    <button type="submit" class="btn cancel" onclick="CloseForm(AddEmployeeForm)">Cancel</button>
+  </form>
+</div>
+<div class="form-popup" id="AddProjectForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Create New Project</h1>
+
+    <label for="projectname"><b>Project Name:</b></label>
+    <input type="text" placeholder="Enter project name" name="projectname" required>
+
+    <label for="projectowner"><b>Project Owner Company:</b></label>
+    <input type="text" placeholder="Enter project owner" name="projectowner" required>
+
+    <button type="submit" class="btn">Create new</button>
+    <button type="submit" class="btn cancel" onclick="CloseForm(AddProjectForm)">Cancel</button>
+  </form>
+</div>
+<div class="form-popup" id="AddCustomerForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Add New Customer Account</h1>
+
+    <label for="firstname"><b>First Name:</b></label>
+    <input type="text" placeholder="Enter first name" name="firstname" required>
+
+    <label for="lastname"><b>Last Name:</b></label>
+    <input type="text" placeholder="Enter last name" name="lastname" required>
+
+    <label for="company"><b>Company:</b></label>
+    <input type="text" placeholder="Enter company" name="company" required>
+
+    <button type="submit" class="btn">Create new</button>
+    <button type="submit" class="btn cancel" onclick="CloseForm(AddCustomerForm)">Cancel</button>
   </form>
 </div>
 
@@ -194,13 +231,13 @@
     ?>   
 
   </p>
-  <button class="open-button" onclick="Form1()">Add User</button>
+  <button class="open-button" onclick="Form(AddEmployeeForm)">Add Employee</button>
 </div>
 
     <button class="accordion"><strong>Projektit</strong></button>
 <div class="panel">
   <p>Esimerkki projekti</p>
-  <button class="open-button" onclick="Form1()">Add Project</button>
+  <button class="open-button" onclick="Form(AddProjectForm)">Add Project</button>
 </div>
 
     <button class="accordion"><strong>Asiakkaat</strong></button>
@@ -237,7 +274,7 @@
       $mysqli->close();        
     ?>   
   </p>
-  <button class="open-button" onclick="Form1()">Add User</button>
+  <button class="open-button" onclick="Form(AddCustomerForm)">Add Customer</button>
 </div>
 
 <script type="text/babel">
