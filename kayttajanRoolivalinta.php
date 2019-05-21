@@ -38,9 +38,13 @@ if ($row['rooli']=='Projektipäällikkö')
     header("location: ppview.php");  
 }
 elseif($row['rooli']=='Työntekijä')
-{header("location: ttview.php");  }
+{
+    header("location: ttview.php");  
+}
 elseif($row['rooli']=='Asiakas')
-{header("location: asview.php");  }
+{
+    header("location: asview.php");  
+}
 
 // echo($row['rooli'] . " "  . $row['sukunimi'] . " " . $row['etunimi']);
 
