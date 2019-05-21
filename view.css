@@ -51,8 +51,6 @@ select{
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
   transform: scale(1.5);
-<<<<<<< HEAD
-=======
 }
 
 .sidenav {
@@ -127,12 +125,10 @@ select{
   width: 260px;
   padding: 16px 20px;
   margin: 10px;
-  
 }
 .open-button:hover {
     background: red;
     opacity: 0.5;
-    
 }
 
 /* The popup form - hidden by default */
@@ -187,7 +183,6 @@ select{
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
->>>>>>> 252074d... popup window
 }
 
 
