@@ -3,6 +3,13 @@ body {
   font-family: italic;
 }
 
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
+}
+
 .dropbtn {
   background-color: #4CAF50;
   color: white;

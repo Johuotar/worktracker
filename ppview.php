@@ -19,14 +19,19 @@
   <form action="/action_page.php" class="form-container">
     <h1>Add New Employee Account</h1>
 
+    <label for="accesslevel"><b>Account Type:</b></label>
+    <br>
+    <select name="Access">
+      <option value="employee">Employee</option>
+      <option value="projectleader">Project Leader</option>
+    </select>
+    <br><br>
+
     <label for="firstname"><b>First Name:</b></label>
     <input type="text" placeholder="Enter first name" name="firstname" required>
 
     <label for="lastname"><b>Last Name:</b></label>
     <input type="text" placeholder="Enter last name" name="lastname" required>
-
-    <label for="accesslevel"><b>Access level:</b></label>
-    <input type="text" placeholder="Access level" name="accesslevel" required>
 
     <button type="submit" class="btn">Create new</button>
     <button type="submit" class="btn cancel" onclick="CloseForm(AddEmployeeForm)">Cancel</button>
