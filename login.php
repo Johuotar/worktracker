@@ -23,7 +23,7 @@
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
          // print $_SESSION['login_user'];
-         header("location: viewv2.php");
+         header("location: kayttajanRoolivalinta.php");
       }else {
          //$error = "Your Login Name or Password is invalid";
          header("location: Login.html");
