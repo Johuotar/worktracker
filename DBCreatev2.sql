@@ -1,4 +1,9 @@
 /* usefull scripts */
+/* VS 2019-05-22: Asiakkaan henkilöstö */
+SELECT a.henkiloID, concat(a.sukunimi, ' ',a.etunimi) as Nimi, a.sposti
+FROM henkilo a
+WHERE a.asiakasID=2 /* $asiakasID */
+and exists(select 1 from henkilo ab where a.asiakasID=ab.asiakasID and ab.henkiloID=11 /* $henkiloID */);
 
 
 /* VS 2019-05-22: asiakashenkilön projektinäkymän haku */
