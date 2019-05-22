@@ -3,13 +3,6 @@ body {
   font-family: italic;
 }
 
-select{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 10px;
-}
-
 .dropbtn {
   background-color: #4CAF50;
   color: white;
@@ -51,6 +44,8 @@ select{
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
   transform: scale(1.5);
+<<<<<<< HEAD
+=======
 }
 
 .sidenav {
@@ -125,10 +120,12 @@ select{
   width: 260px;
   padding: 16px 20px;
   margin: 10px;
+  
 }
 .open-button:hover {
     background: red;
     opacity: 0.5;
+    
 }
 
 /* The popup form - hidden by default */
@@ -183,16 +180,9 @@ select{
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+>>>>>>> 252074d... popup window
 }
 
-/*Style of logout link */
-.logout {
-  float: right;
-  border: none;
-  background: #EDEDED;
-  color: arial;
-  font-size: 12px;
-  padding: 10px 15px;
-}
+
 
 
