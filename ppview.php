@@ -15,13 +15,9 @@
 
 <body>
 
-<div style="float:right">
-<form align="right" name="form1" method="post" action="logout.php">
-  <label class="logout">
-  <input name="submit2" type="submit" id="submit2" value="logout">
-  </label>
-</form>
-</div>
+
+
+<a href="logout.php" class="logout">logout</a>
 
 <div class="form-popup" id="AddEmployeeForm">
   <form action="/action_page.php" class="form-container">
