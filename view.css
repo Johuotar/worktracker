@@ -211,7 +211,7 @@ select{
   
   padding: 20px;
   font-size: 30px;
-  width: 50px;
+  width: 40px;
   text-align: center;
   text-decoration: none;
   
@@ -224,7 +224,7 @@ select{
 /* Facebook */
 .fa-facebook {
   position: absolute;
-  right: 43px;
+  right: 45px;
   top: 80px;
   background: #3B5998;
   color: white;
@@ -233,7 +233,7 @@ select{
 /* Twitter */
 .fa-twitter {
   position: absolute;
-  right: 43px;
+  right: 45px;
   top: 150px;
   background: #55ACEE;
   color: white;
@@ -241,7 +241,7 @@ select{
 
 .fa-linkedin {
   position: absolute;
-  right: 43px;
+  right: 45px;
   top: 220px;
   background: #007bb5;
   color: white;
