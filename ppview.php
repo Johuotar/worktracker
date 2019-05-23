@@ -15,9 +15,8 @@
 
 <body>
 
-
-
-<a href="logout.php" class="logout">logout</a>
+<!-- logout-toiminnallisuus -->
+<a href="logout.php" class="logout">Kirjaudu ulos</a>
 
 <div class="form-popup" id="AddEmployeeForm">
   <form action="/action_page.php" class="form-container">

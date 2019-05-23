@@ -15,6 +15,9 @@
 
 <body>
 
+<!-- logout-toiminnallisuus -->
+<a href="logout.php" class="logout">Kirjaudu ulos</a>
+
 <div class="form-popup" id="CreateForm">
   <form action="/action_page.php" class="form-container">
     <h1>Create New Account</h1>
