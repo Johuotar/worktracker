@@ -349,7 +349,13 @@ ReactDOM.render(<MyComponent />, document.getElementById('root'));
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="footer">
-  <h1>Copywrite@WorkTracker</h1>
+
+  <!-- <h3>Copywrite@WorkTracker</h3> -->
+  <!-- sosiaalisen median linkit -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<a href="https://www.facebook.com" class="fa fa-facebook"></a>
+<a href="https://www.twitter.com" class="fa fa-twitter"></a>
+<a href="https://www.linkedin.com" class="fa fa-linkedin"></a>
 </div>
 
 </body>
