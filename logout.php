@@ -5,7 +5,7 @@ session_start();
 unset($_SESSION['login_user']);
 // Finally, destroy the session.    
 session_destroy();
-
+mysqli_close($mysqli);
 // Include URL for Login page to login again.
 header("Location: Login.html");
 exit;
