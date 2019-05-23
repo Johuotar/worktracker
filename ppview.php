@@ -149,13 +149,13 @@
 
             <?php
 
-            session_start();
+            //session_start();
 
             // print_r($_SESSION);
 
             $myusername = $_SESSION['login_user'];
 
-            include("db_connection_config.php");
+            include_once("db_connection_config.php");
             
             $sql = "SELECT b.henkiloID, b.sukunimi, b.etunimi
             ,c.asiakasID, c.nimi, c.tyyppi, f.rooliID, f.rooli
@@ -347,6 +347,10 @@ ReactDOM.render(<MyComponent />, document.getElementById('root'));
 
 <script src="view.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="footer">
+  <h1>Copywrite@WorkTracker</h1>
+</div>
 
 </body>
 </html>
