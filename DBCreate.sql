@@ -21,16 +21,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/worktracker /*!40100 DEFAULT CHARACTER S
 USE worktracker;
 
 
-drop user if exists 'worktrackAdmin'@'localhost';
-
-/* worktrackAdmin käyttäjän luonti  */
-create user 'worktrackAdmin'@'localhost' identified by 'WAdmin';
-
-
-grant select, insert, update, delete on worktracker.* 
-to 'worktrackAdmin'@'localhost';
-
-
 
 /*Table structure for table asiakas */
 
@@ -187,6 +177,9 @@ and not EXISTS(select 1 from kayttaja ab where a.sposti=ab.kayttajatunnus
  and concat(substring(a.Etunimi,1,4),substring(a.Sukunimi,1,3))=ab.salasana) 
 ;
 
+update kayttaja 
+set salasana=password(salasana)
+where 1;
 
 
 
@@ -607,6 +600,21 @@ CREATE TABLE projektinTehtavanKommentti (
 /*Data for the table projektinTehtavanKommentti */
 
 
+use mysql;
+
+drop user if exists 'worktrackAdmin'@'localhost';
+
+/* worktrackAdmin käyttäjän luonti  */
+create user 'worktrackAdmin'@'localhost' identified by 'WAdmin';
+
+
+grant select, insert, update, delete on worktracker.* 
+to 'worktrackAdmin'@'localhost';
+
+UPDATE user SET Select_priv='Y',Insert_priv='Y'
+,Update_priv='Y',Delete_priv='Y'
+WHERE User='worktrackAdmin'
+;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
