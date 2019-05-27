@@ -331,8 +331,11 @@ class FormComponent extends React.Component {
           </select>
         </label>
         <label>
-          Approved:
-          <input type="text" approved={this.state.approved} onChange={this.handleChange} />
+          Approval:
+          <select progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="done">Done</option>
+          </select>
         </label>
       </form>
     );
