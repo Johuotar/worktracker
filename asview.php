@@ -115,7 +115,6 @@
       
       /* free result set */
       $result->free();
-      $result1->free();
       
       /* close connection */
       $mysqli->close();
@@ -167,7 +166,7 @@
 
         require 'db_connection_config.php'; 
 
-        $sql = "SELECT a.henkiloID, concat(a.sukunimi, ' ',a.etunimi) as Nimi, a.sposti
+        $sql = "SELECT a.henkiloID, concat(a.sukunimi, ' ',a.etunimi) as Nimi
         FROM henkilo a
         WHERE a.asiakasID=$asiakasID
         and exists(select 1 from henkilo ab where a.asiakasID=ab.asiakasID and ab.henkiloID=$henkiloID);           
@@ -198,18 +197,26 @@
   <!-- <button class="open-button" onclick="Form1()">Add User</button> -->
 </div>
 
-<button class="accordion"><strong>Projektit - tarvitaanko?</strong></button>
+<button class="accordion"><strong>Projektit</strong></button>
 <div class="panel">
-  <p></p>
+  <p> <div class="prjhaku">
+      <input type="radio" name="aktiivisetProjektit" value="aktiivinen" checked> Aktiiviset projektit<br>
+      <input type="radio" name="aktiivisetProjektit" value="arkistoitu"> Arkistoidut projektit<br>
+      <input type="radio" name="aktiivisetProjektit" value="eivalia"> Aktiiviset ja Arkistoidut projektit<br>
+      <input type="text" placeholder="Search..">Hae nimellä 
+      </div>
+  </p>
  <!--  <button class="open-button" onclick="Form1()">Add Project</button> -->
 </div>
 
-<button class="accordion"><strong>Asiakkaat - tarvitaanko?</strong></button>
+<!--
+<button class="accordion"><strong>Asiakkaat</strong></button>
 <div class="panel">
   <p id='plAsiakkaat'>
   </p>
-  <!--  <button class="open-button" onclick="Form1()">Add User</button> -->
+  < !--  <button class="open-button" onclick="Form1()">Add User</button> -- >
 </div>
+-->
 
 <script src="view.js"></script>
 
