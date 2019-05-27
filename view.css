@@ -213,10 +213,10 @@ select{
   /*bottom: 10px;*/
   padding: 20px;
   font-size: 30px;
-  width: 40px;
+  width: 30px;
   text-align: center;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .fa:hover {
