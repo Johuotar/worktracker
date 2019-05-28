@@ -299,7 +299,7 @@
 class Multiple extends React.Component {
   render() {
     let rows = [];
-    for (let i=0; i < 8; i++) {
+    for (let i=0; i < 3; i++) {
       rows.push(<FormComponent key={i} />)
     }
     return <div>{rows}</div>;
