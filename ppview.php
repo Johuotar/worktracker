@@ -79,7 +79,7 @@
 </div>
 
 <!--Tähän React renderoi-->
-<div id="react" class="main"></div>
+<div id="react" class="main"><p>React element div</p></div>
 
 <div class="main">
 <h2>Your Projects:</h2>
@@ -312,7 +312,9 @@ class FormComponent extends React.Component {
     this.state =
     {name: ''},
     {task: ''},
+    {startdate: ''},
     {progress: ''},
+    {projectid: ''},
     {approved: ''};
 
     this.handleChange = this.handleChange.bind(this);
@@ -328,8 +330,16 @@ class FormComponent extends React.Component {
           <input type="text" name={this.state.name} onChange={this.handleChange} />
         </label>
         <label>
+          Project Id:
+          <input type="text" projectid={this.state.projectid} onChange={this.handleChange} />
+        </label>
+        <label>
           Task:
           <input type="text" task={this.state.task} onChange={this.handleChange} />
+        </label>
+        <label>
+          Start Date:
+          <input type="text" startdate={this.state.startdate} onChange={this.handleChange} />
         </label>
         <label>
           Progress:
