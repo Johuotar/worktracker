@@ -5,7 +5,6 @@
    <link rel="stylesheet" type="text/css" href="view.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
 
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -78,6 +77,9 @@
     <button type="submit" class="btn cancel" onclick="CloseForm(AddCustomerForm)">Cancel</button>
   </form>
 </div>
+
+<!--Tähän React renderoi-->
+<div id="react" class="main"><p>React element div</p></div>
 
 <div class="main">
 <h2>Your Projects:</h2>
@@ -258,13 +260,13 @@
     <button class="accordion"><strong>Asiakkaat</strong></button>
 <div class="panel">
   <p id='plAsiakkaat'>
-  <?php 
-        // Tähän työntekijät tietokannasta   
-        require 'db_connection_config.php';       
+  <?php
+        // Tähän työntekijät tietokannasta
+        require 'db_connection_config.php';
         // seuraava looppi
         $sql = "SELECT a.asiakasId, a.nimi
          FROM asiakas a
-         where a.tyyppi='T'     
+         where a.tyyppi='T'
          ";
 
         $result = mysqli_query($mysqli, $sql) or die ("Bad Query: $sql");
@@ -294,54 +296,86 @@
 
 <script type="text/babel">
 
-class MyComponent extends React.Component {
+class Multiple extends React.Component {
+  render() {
+    let rows = [];
+    for (let i=0; i < 3; i++) {
+      rows.push(<FormComponent key={i} />)
+    }
+    return <div>{rows}</div>;
+  }
+}
+
+class FormComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      users: [
-        {
-          username: 'Masa',
-          online: true
-        },
-        {
-          username: 'Jonne',
-          online: false
-        },
-        {
-          username: 'Alpakka',
-          online: true
-        },
-        {
-          username: 'Jake',
-          online: true
-        },
-        {
-          username: 'Sisko',
-          online: true
-        },
-        {
-          username: 'Late',
-          online: true
-        }
-      ]
-    }
+    this.state =
+    {name: ''},
+    {task: ''},
+    {startdate: ''},
+    {progress: ''},
+    {projectid: ''},
+    {approved: ''};
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+  handleChange(event) {
+    this.setState({name: event.target.name});
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    console.log("submit log")
+
+    fetch('/api/form-submit-url', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
   render() {
-    const usersOnline = this.state.users.filter(i => i.online == true); // kertoo kuka on onlinessä
-    const renderOnline = usersOnline.map((i) => <li key={i.username + 1}>{i.username}</li>); // listaa kaikki käyttäjät
-  
     return (
-       <div>
-         <h3>Käytettävissä:</h3>
-         <ul>
-           {renderOnline}
-         </ul>
-       </div>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" name={this.state.name} onChange={this.handleChange} />
+        </label>
+        <label>
+          Project Id:
+          <input type="text" projectid={this.state.projectid} onChange={this.handleChange} />
+        </label>
+        <label>
+          Task:
+          <input type="text" task={this.state.task} onChange={this.handleChange} />
+        </label>
+        <label>
+          Start Date:
+          <input type="text" startdate={this.state.startdate} onChange={this.handleChange} />
+        </label>
+        <label>
+          Progress:
+          <select progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="wip">Wip</option>
+            <option progress="stuck">Stuck</option>
+            <option progress="done">Done</option>
+          </select>
+        </label>
+        <label>
+          Approval:
+          <select progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="done">Done</option>
+          </select>
+        </label>
+        <button onClick = {this.onSubmit} >submit</button>
+      </form>
     );
   }
-};
+}
 
-ReactDOM.render(<MyComponent />, document.getElementById('root'));
+ReactDOM.render(<Multiple />, document.getElementById('react'));
+
 
 </script>
 

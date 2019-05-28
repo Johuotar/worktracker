@@ -252,6 +252,7 @@ select{
    position: fixed;
    right: 0;
    bottom: 0;
+   height: 55px;
    width: 81.25%;
    background-image: linear-gradient(to bottom right, white, lightblue);
    color: black;
