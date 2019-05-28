@@ -296,6 +296,37 @@
 
 <script type="text/babel">
 
+class TableComponent extends React.Component {
+
+createTable = () => {
+  let table = []
+
+  // Outer loop to create parent
+  for (let i = 0; i < 3; i++) {
+    let children = []
+    //Inner loop to create children
+    for (let j = 0; j < 2; j++) {
+      children.push(<td key={i.toString() + '.' + j.toString()}>{`Text ${j + 1}`}</td>)
+      //console.log(i.toString() + '.' + j.toString())
+    }
+    //Create the parent and add the children
+    table.push(<tr>{children}</tr>)
+  }
+  return table
+}
+
+
+render() {
+  return(
+
+    <table>
+      <tbody>{this.createTable()}</tbody>
+    </table>
+  );
+}
+
+}
+
 class FormComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -342,7 +373,7 @@ class FormComponent extends React.Component {
   }
 }
 
-ReactDOM.render(<FormComponent />, document.getElementById('react'));
+ReactDOM.render(<TableComponent />, document.getElementById('react'));
 
 
 </script>
