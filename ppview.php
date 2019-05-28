@@ -316,12 +316,23 @@ class FormComponent extends React.Component {
     {progress: ''},
     {projectid: ''},
     {approved: ''};
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     this.setState({name: event.target.name});
   }
+  handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    console.log("submit log")
+
+    fetch('/api/form-submit-url', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -357,6 +368,7 @@ class FormComponent extends React.Component {
             <option progress="done">Done</option>
           </select>
         </label>
+        <button onClick = {this.onSubmit} >submit</button>
       </form>
     );
   }
