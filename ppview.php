@@ -348,21 +348,22 @@ class FormComponent extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+      <div style={{flex: 1, flexDirection: 'column'}}>
         <label>
           Name:
-          <input type="text" name={this.state.name} onChange={this.handleChange} />
+          <input style={{width: 150, height: 20, backgroundColor: 'skyblue'}} type="text" name={this.state.name} onChange={this.handleChange} />
         </label>
         <label>
           Project Id:
-          <input type="text" projectid={this.state.projectid} onChange={this.handleChange} />
+          <input style={{width: 35, height: 20, backgroundColor: 'skyblue'}} type="text" projectid={this.state.projectid} onChange={this.handleChange} />
         </label>
         <label>
           Task:
-          <input type="text" task={this.state.task} onChange={this.handleChange} />
+          <input style={{width: 220, height: 20, backgroundColor: 'skyblue'}} type="text" task={this.state.task} onChange={this.handleChange} />
         </label>
         <label>
           Start Date:
-          <input type="text" startdate={this.state.startdate} onChange={this.handleChange} />
+          <input style={{width: 80, height: 20, backgroundColor: 'skyblue'}} type="text" startdate={this.state.startdate} onChange={this.handleChange} />
         </label>
         <label>
           Progress:
@@ -381,6 +382,7 @@ class FormComponent extends React.Component {
           </select>
         </label>
         <button onClick = {this.onSubmit} >submit</button>
+      </div>
       </form>
     );
   }
