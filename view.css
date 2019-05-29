@@ -190,11 +190,10 @@ select{
   position: absolute;
   right: 15px;
   top: 10px;
-  display: inline-block;
-  padding: 0.5em 1em;
+  padding: 0.3em 1em;
   text-decoration: none;
   border-radius: 3px;
-  font-weight: bold;
+  font-weight: normal;
   color: black;
   background-image: -webkit-linear-gradient(45deg, lightblue 0%, #b0c9ff 100%);
   background-image: linear-gradient(45deg,  lightblue 0%, #b0c9ff 100%);
