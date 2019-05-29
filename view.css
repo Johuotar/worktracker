@@ -188,8 +188,8 @@ select{
 /*Style of logout link*/
 .logout{
   position: absolute;
-  right: 25px;
-  top: 25px;
+  right: 15px;
+  top: 10px;
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
@@ -208,9 +208,6 @@ select{
 
 /*Style of social media links*/
 .fa {
-  /*position: absolute;*/
-  /*left: 900px;*/
-  /*bottom: 10px;*/
   padding: 20px;
   font-size: 30px;
   width: 30px;
@@ -224,25 +221,16 @@ select{
 }
 
 .fa-facebook {
-  /*position: absolute;*/
-  /*right: 45px;*/
-  /*top: 80px;*/
   background: #3B5998;
   color: white;
 }
 
 .fa-twitter {
-  /*position: absolute;*/
-  /*right: 45px;*/
-  /*top: 150px;*/
   background: #55ACEE;
   color: white;
 }
 
 .fa-linkedin {
-  /*position: absolute;*/
-  /*right: 45px;*/
-  /*top: 220px;*/
   background: #007bb5;
   color: white;
 }
