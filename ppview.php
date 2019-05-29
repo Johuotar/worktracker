@@ -305,6 +305,9 @@ const problemStyle = {
 const assignedStyle = {
   color: 'gray'
 };
+const buttonStyle = {
+  margin: 5
+};
 //how many rows are made
 var numberRows = 4
 
@@ -348,26 +351,26 @@ class FormComponent extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-      <div style={{flex: 1, flexDirection: 'column'}}>
+      <div>
         <label>
           Name:
-          <input style={{width: 150, height: 20, backgroundColor: 'skyblue'}} type="text" name={this.state.name} onChange={this.handleChange} />
+          <input style={{width: 150, height: 20}} type="text" name={this.state.name} onChange={this.handleChange} />
         </label>
         <label>
           Project Id:
-          <input style={{width: 35, height: 20, backgroundColor: 'skyblue'}} type="text" projectid={this.state.projectid} onChange={this.handleChange} />
+          <input style={{width: 35, height: 20}} type="text" projectid={this.state.projectid} onChange={this.handleChange} />
         </label>
         <label>
           Task:
-          <input style={{width: 220, height: 20, backgroundColor: 'skyblue'}} type="text" task={this.state.task} onChange={this.handleChange} />
+          <input style={{width: 220, height: 20}} type="text" task={this.state.task} onChange={this.handleChange} />
         </label>
         <label>
           Start Date:
-          <input style={{width: 80, height: 20, backgroundColor: 'skyblue'}} type="text" startdate={this.state.startdate} onChange={this.handleChange} />
+          <input style={{width: 80, height: 20}} type="text" startdate={this.state.startdate} onChange={this.handleChange} />
         </label>
         <label>
           Progress:
-          <select progress={this.state.progress} onChange={this.handleChange}>
+          <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
             <option style={assignedStyle} progress="assigned">Assigned</option>
             <option progress="wip">Wip</option>
             <option style={problemStyle} progress="stuck">Stuck</option>
@@ -381,7 +384,7 @@ class FormComponent extends React.Component {
             <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
-        <button onClick = {this.onSubmit} >submit</button>
+        <button style={buttonStyle} onClick={this.onSubmit}>submit</button>
       </div>
       </form>
     );
