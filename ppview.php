@@ -351,23 +351,28 @@ class FormComponent extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-      <div>
-        <label>
-          Name:
-          <input style={{width: 150, height: 20}} type="text" name={this.state.name} onChange={this.handleChange} />
-        </label>
-        <label>
-          Project Id:
-          <input style={{width: 35, height: 20}} type="text" projectid={this.state.projectid} onChange={this.handleChange} />
-        </label>
-        <label>
-          Task:
-          <input style={{width: 220, height: 20}} type="text" task={this.state.task} onChange={this.handleChange} />
-        </label>
-        <label>
-          Start Date:
-          <input style={{width: 80, height: 20}} type="text" startdate={this.state.startdate} onChange={this.handleChange} />
-        </label>
+
+      <div class="container">
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" name={this.state.name} onChange={this.handleChange} />
+          <label>Name</label>
+        </div>
+
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" projectid={this.state.projectid} onChange={this.handleChange} />
+          <label>Project Id:</label>
+        </div>
+
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" task={this.state.task} onChange={this.handleChange} />
+          <label>Task:</label>
+        </div>
+
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" startdate={this.state.startdate} onChange={this.handleChange} />
+          <label>Start Date:</label>
+        </div>
+        
         <label>
           Progress:
           <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
@@ -377,6 +382,7 @@ class FormComponent extends React.Component {
             <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
+
         <label>
           Approval:
           <select progress={this.state.progress} onChange={this.handleChange}>
@@ -384,8 +390,9 @@ class FormComponent extends React.Component {
             <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
+        </div>
         <button style={buttonStyle} onClick={this.onSubmit}>submit</button>
-      </div>
+        
       </form>
     );
   }
