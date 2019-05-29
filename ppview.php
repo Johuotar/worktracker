@@ -295,11 +295,23 @@
 </div>
 
 <script type="text/babel">
+//In React, inline styles are not specified as a string
+const doneStyle = {
+  color: 'green'
+};
+const problemStyle = {
+  color: 'red'
+};
+const assignedStyle = {
+  color: 'gray'
+};
+//how many rows are made
+var numberRows = 4
 
 class Multiple extends React.Component {
   render() {
     let rows = [];
-    for (let i=0; i < 3; i++) {
+    for (let i=0; i < numberRows; i++) {
       rows.push(<FormComponent key={i} />)
     }
     return <div>{rows}</div>;
@@ -355,17 +367,17 @@ class FormComponent extends React.Component {
         <label>
           Progress:
           <select progress={this.state.progress} onChange={this.handleChange}>
-            <option progress="assigned">Assigned</option>
+            <option style={assignedStyle} progress="assigned">Assigned</option>
             <option progress="wip">Wip</option>
-            <option progress="stuck">Stuck</option>
-            <option progress="done">Done</option>
+            <option style={problemStyle} progress="stuck">Stuck</option>
+            <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
         <label>
           Approval:
           <select progress={this.state.progress} onChange={this.handleChange}>
-            <option progress="assigned">Assigned</option>
-            <option progress="done">Done</option>
+            <option style={assignedStyle} progress="assigned">Assigned</option>
+            <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
         <button onClick = {this.onSubmit} >submit</button>
