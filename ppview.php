@@ -349,7 +349,7 @@ class FormComponent extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    console.log("submit log")
+    console.log("Submit function is unimplemented!")
 
     fetch('/api/form-submit-url', {
       method: 'POST',
