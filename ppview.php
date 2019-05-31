@@ -308,6 +308,15 @@ const assignedStyle = {
 const buttonStyle = {
   margin: 5
 };
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 1
+        }}
+    />
+);
 //how many rows are made
 var numberRows = 4
 
@@ -392,7 +401,7 @@ class FormComponent extends React.Component {
         </label>
         </div>
         <button style={buttonStyle} onClick={this.onSubmit}>submit</button>
-        
+        <ColoredLine color="black" />
       </form>
     );
   }
