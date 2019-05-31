@@ -394,7 +394,7 @@ class FormComponent extends React.Component {
 
         <label>
           Approval:
-          <select progress={this.state.progress} onChange={this.handleChange}>
+          <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
             <option style={assignedStyle} progress="assigned">Assigned</option>
             <option style={doneStyle} progress="done">Done</option>
           </select>
