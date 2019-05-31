@@ -363,22 +363,22 @@ class FormComponent extends React.Component {
 
       <div class="container">
         <div class="input-alpha">
-          <input style={{width: 150, height: 20}} type="text" required="required" name={this.state.name} onChange={this.handleChange} />
+          <input style={{width: 200, height: 20}} type="text" required="required" name={this.state.name} onChange={this.handleChange} />
           <label>Name</label>
         </div>
 
         <div class="input-alpha">
-          <input style={{width: 150, height: 20}} type="text" required="required" projectid={this.state.projectid} onChange={this.handleChange} />
+          <input style={{width: 120, height: 20}} type="text" required="required" projectid={this.state.projectid} onChange={this.handleChange} />
           <label>Project Id:</label>
         </div>
 
         <div class="input-alpha">
-          <input style={{width: 150, height: 20}} type="text" required="required" task={this.state.task} onChange={this.handleChange} />
+          <input style={{width: 200, height: 20}} type="text" required="required" task={this.state.task} onChange={this.handleChange} />
           <label>Task:</label>
         </div>
 
         <div class="input-alpha">
-          <input style={{width: 150, height: 20}} type="text" required="required" startdate={this.state.startdate} onChange={this.handleChange} />
+          <input style={{width: 120, height: 20}} type="text" required="required" startdate={this.state.startdate} onChange={this.handleChange} />
           <label>Start Date:</label>
         </div>
         
