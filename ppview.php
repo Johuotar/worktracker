@@ -3,6 +3,9 @@
 <title>WorkTracker view</title>
 <head>
    <link rel="stylesheet" type="text/css" href="view.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -79,7 +82,6 @@
 </div>
 
 <!--Tähän React renderoi-->
-<div id="react" class="main"><p>React element div</p></div>
 
 <div class="main">
 <h2>Your Projects:</h2>
@@ -143,7 +145,7 @@
       ?>   
 </div>
  
-
+<div class="main" id="container"></div>
 <div class="sidenav">
   
     <h4 style="margin-left:1em;">
@@ -294,128 +296,208 @@
   <button class="open-button" onclick="Form(AddCustomerForm)">Add Customer</button>
 </div>
 
+
 <script type="text/babel">
-//In React, inline styles are not specified as a string
-const doneStyle = {
-  color: 'green'
-};
-const problemStyle = {
-  color: 'red'
-};
-const assignedStyle = {
-  color: 'gray'
-};
-const buttonStyle = {
-  margin: 5
-};
-const ColoredLine = ({ color }) => (
-    <hr
-        style={{
-            color: color,
-            backgroundColor: color,
-            height: 1
-        }}
-    />
-);
-//how many rows are made
-var numberRows = 4
+class Products extends React.Component {
 
-class Multiple extends React.Component {
-  render() {
-    let rows = [];
-    for (let i=0; i < numberRows; i++) {
-      rows.push(<FormComponent key={i} />)
+constructor(props) {
+  super(props);
+
+  //  this.state.products = [];
+  this.state = {};
+  this.state.filterText = "";
+  this.state.products = [
+    {
+      id: 1,
+      Status: '',
+      Task: '',
+      Date: '',
+      name: ''
     }
-    return <div>{rows}</div>;
+  ];
+
+}
+handleUserInput(filterText) {
+  this.setState({filterText: filterText});
+};
+handleRowDel(product) {
+  var index = this.state.products.indexOf(product);
+  this.state.products.splice(index, 1);
+  this.setState(this.state.products);
+};
+
+handleAddEvent(evt) {
+  var id = (+ new Date() + Math.floor(Math.random() * 999999)).toString(36);
+  var product = {
+    id: id,
+    name: "",
+    Task: "",
+    Status: "",
+   Date: ""
   }
+  this.state.products.push(product);
+  this.setState(this.state.products);
+
 }
 
-class FormComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state =
-    {name: ''},
-    {task: ''},
-    {startdate: ''},
-    {progress: ''},
-    {projectid: ''},
-    {approved: ''};
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+handleProductTable(evt) {
+  var item = {
+    id: evt.target.id,
+    name: evt.target.name,
+    value: evt.target.value
+  };
+var products = this.state.products.slice();
+var newProducts = products.map(function(product) {
+
+  for (var key in product) {
+    if (key == item.name && product.id == item.id) {
+      product[key] = item.value;
+
+    }
   }
-  handleChange(event) {
-    this.setState({name: event.target.name});
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    console.log("Submit function is unimplemented!")
+  return product;
+});
+  this.setState({products:newProducts});
+//  console.log(this.state.products);
+};
+render() {
 
-    fetch('/api/form-submit-url', {
-      method: 'POST',
-      body: data,
-    });
-  }
+  return (
+    <div>
+      <SearchBar filterText={this.state.filterText} onUserInput={this.handleUserInput.bind(this)}/>
+      <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)} onRowAdd={this.handleAddEvent.bind(this)} onRowDel={this.handleRowDel.bind(this)} products={this.state.products} filterText={this.state.filterText}/>
+    </div>
+  );
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-
-      <div class="container">
-        <div class="input-alpha">
-          <input style={{width: 200, height: 20}} type="text" required="required" name={this.state.name} onChange={this.handleChange} />
-          <label>Name</label>
-        </div>
-
-        <div class="input-alpha">
-          <input style={{width: 120, height: 20}} type="text" required="required" projectid={this.state.projectid} onChange={this.handleChange} />
-          <label>Project Id:</label>
-        </div>
-
-        <div class="input-alpha">
-          <input style={{width: 200, height: 20}} type="text" required="required" task={this.state.task} onChange={this.handleChange} />
-          <label>Task:</label>
-        </div>
-
-        <div class="input-alpha">
-          <input style={{width: 120, height: 20}} type="text" required="required" startdate={this.state.startdate} onChange={this.handleChange} />
-          <label>Start Date:</label>
-        </div>
-        
-        <label>
-          Progress:
-          <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
-            <option style={assignedStyle} progress="assigned">Assigned</option>
-            <option progress="wip">Wip</option>
-            <option style={problemStyle} progress="stuck">Stuck</option>
-            <option style={doneStyle} progress="done">Done</option>
-          </select>
-        </label>
-
-        <label>
-          Approval:
-          <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
-            <option style={assignedStyle} progress="assigned">Assigned</option>
-            <option style={doneStyle} progress="done">Done</option>
-          </select>
-        </label>
-        </div>
-        <button style={buttonStyle} onClick={this.onSubmit}>submit</button>
-        <ColoredLine color="black" />
-      </form>
-    );
-  }
 }
 
-ReactDOM.render(<Multiple />, document.getElementById('react'));
+}
+class SearchBar extends React.Component {
+handleChange() {
+  this.props.onUserInput(this.refs.filterTextInput.value);
+}
+render() {
+  return (
+    <div>
 
+      <input type="text" placeholder="Search..." value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange.bind(this)}/>
+
+    </div>
+
+  );
+}
+
+}
+
+class ProductTable extends React.Component {
+
+render() {
+  var onProductTableUpdate = this.props.onProductTableUpdate;
+  var rowDel = this.props.onRowDel;
+  var filterText = this.props.filterText;
+  var product = this.props.products.map(function(product) {
+    if (product.name.indexOf(filterText) === -1) {
+      return;
+    }
+    return (<ProductRow onProductTableUpdate={onProductTableUpdate} product={product} onDelEvent={rowDel.bind(this)} key={product.id}/>)
+  });
+  return (
+    <div>
+
+
+    <button type="button" onClick={this.props.onRowAdd} className="btn btn-primary m-2">Add</button>
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Task</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {product}
+
+        </tbody>
+
+      </table>
+    </div>
+  );
+
+}
+
+}
+
+class ProductRow extends React.Component {
+onDelEvent() {
+  this.props.onDelEvent(this.props.product);
+
+}
+render() {
+
+  return (
+    <tr className="eachRow">
+      <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
+        "type": "name",
+        value: this.props.product.name,
+        id: this.props.product.id
+      }}/>
+      <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
+        type: "Task",
+        value: this.props.product.Task,
+        id: this.props.product.id
+      }}/>
+      <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
+        type: "qty",
+        value: this.props.product.qty,
+        id: this.props.product.id
+      }}/>
+      <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
+        type: "Status",
+        value: this.props.product.Status,
+        id: this.props.product.id
+      }}/>
+      <td className="del-cell">
+        <input type="button" onClick={this.onDelEvent.bind(this)} value="X" className="del-btn"/>
+      </td>
+    </tr>
+  );
+
+}
+
+}
+class EditableCell extends React.Component {
+
+render() {
+  return (
+    <td>
+      <input type='text' name={this.props.cellData.type} id={this.props.cellData.id} value={this.props.cellData.value} onChange={this.props.onProductTableUpdate}/>
+    </td>
+  );
+
+}
+
+}
+ReactDOM.render( < Products /> , document.getElementById('container'));
+
+/*
+(The MIT License)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
 </script>
 
 <script src="view.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <div class="footer">
+
 
   <!-- <h3>Copywrite@WorkTracker</h3> -->
   <!-- sosiaalisen median linkit -->

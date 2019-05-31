@@ -287,6 +287,7 @@ label {
     -moz-appearance: none;
     font-size: 14px;
     transition: all 0.1s ease-in-out;
+    
   }
   .input-alpha input:focus {
     outline: 0;
@@ -303,4 +304,8 @@ label {
   .input-alpha input:-webkit-autofill + label {
     top: 7px;
     transform: scale(0.8);
+  }
+
+  style.buttonStyle {
+      border-radius: 50%;
   }
