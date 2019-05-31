@@ -295,11 +295,35 @@
 </div>
 
 <script type="text/babel">
+//In React, inline styles are not specified as a string
+const doneStyle = {
+  color: 'green'
+};
+const problemStyle = {
+  color: 'red'
+};
+const assignedStyle = {
+  color: 'gray'
+};
+const buttonStyle = {
+  margin: 5
+};
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 1
+        }}
+    />
+);
+//how many rows are made
+var numberRows = 4
 
 class Multiple extends React.Component {
   render() {
     let rows = [];
-    for (let i=0; i < 3; i++) {
+    for (let i=0; i < numberRows; i++) {
       rows.push(<FormComponent key={i} />)
     }
     return <div>{rows}</div>;
@@ -325,7 +349,7 @@ class FormComponent extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    console.log("submit log")
+    console.log("Submit function is unimplemented!")
 
     fetch('/api/form-submit-url', {
       method: 'POST',
@@ -336,39 +360,48 @@ class FormComponent extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" name={this.state.name} onChange={this.handleChange} />
-        </label>
-        <label>
-          Project Id:
-          <input type="text" projectid={this.state.projectid} onChange={this.handleChange} />
-        </label>
-        <label>
-          Task:
-          <input type="text" task={this.state.task} onChange={this.handleChange} />
-        </label>
-        <label>
-          Start Date:
-          <input type="text" startdate={this.state.startdate} onChange={this.handleChange} />
-        </label>
+
+      <div class="container">
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" name={this.state.name} onChange={this.handleChange} />
+          <label>Name</label>
+        </div>
+
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" projectid={this.state.projectid} onChange={this.handleChange} />
+          <label>Project Id:</label>
+        </div>
+
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" task={this.state.task} onChange={this.handleChange} />
+          <label>Task:</label>
+        </div>
+
+        <div class="input-alpha">
+          <input style={{width: 150, height: 20}} type="text" required="required" startdate={this.state.startdate} onChange={this.handleChange} />
+          <label>Start Date:</label>
+        </div>
+        
         <label>
           Progress:
-          <select progress={this.state.progress} onChange={this.handleChange}>
-            <option progress="assigned">Assigned</option>
+          <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
+            <option style={assignedStyle} progress="assigned">Assigned</option>
             <option progress="wip">Wip</option>
-            <option progress="stuck">Stuck</option>
-            <option progress="done">Done</option>
+            <option style={problemStyle} progress="stuck">Stuck</option>
+            <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
+
         <label>
           Approval:
-          <select progress={this.state.progress} onChange={this.handleChange}>
-            <option progress="assigned">Assigned</option>
-            <option progress="done">Done</option>
+          <select style={buttonStyle} progress={this.state.progress} onChange={this.handleChange}>
+            <option style={assignedStyle} progress="assigned">Assigned</option>
+            <option style={doneStyle} progress="done">Done</option>
           </select>
         </label>
-        <button onClick = {this.onSubmit} >submit</button>
+        </div>
+        <button style={buttonStyle} onClick={this.onSubmit}>submit</button>
+        <ColoredLine color="black" />
       </form>
     );
   }
