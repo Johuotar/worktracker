@@ -6,6 +6,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.3.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/reactstrap/8.0.0/reactstrap.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -332,8 +333,8 @@ handleAddEvent(evt) {
     id: id,
     name: "",
     Task: "",
-    Status: "",
-   Date: ""
+    
+    Date: ""
   }
   this.state.products.push(product);
   this.setState(this.state.products);
@@ -412,7 +413,7 @@ render() {
             <th>Name</th>
             <th>Task</th>
             <th>Date</th>
-            <th>Status</th>
+    
           </tr>
         </thead>
 
@@ -422,6 +423,7 @@ render() {
         </tbody>
 
       </table>
+      
     </div>
   );
 
@@ -453,11 +455,19 @@ render() {
         value: this.props.product.qty,
         id: this.props.product.id
       }}/>
-      <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
-        type: "Status",
-        value: this.props.product.Status,
-        id: this.props.product.id
-      }}/>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Status
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+          <a class="dropdown-item" href="#">WIP</a>
+          <a class="dropdown-item" href="#">HELP!</a>
+          <a class="dropdown-item" href="#">DONE</a>
+        </div>
+      </div>
+        
+    
+     
       <td className="del-cell">
         <input type="button" onClick={this.onDelEvent.bind(this)} value="X" className="del-btn"/>
       </td>
