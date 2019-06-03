@@ -432,6 +432,15 @@ render() {
 }
 
 class ProductRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state =
+    {progress: ''}
+    this.handleChange = this.handleChange.bind(this);
+  }
+handleChange(event) {
+    this.setState({name: event.target.name});
+  }
 onDelEvent() {
   this.props.onDelEvent(this.props.product);
 
@@ -455,19 +464,17 @@ render() {
         value: this.props.product.qty,
         id: this.props.product.id
       }}/>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Status
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-          <a class="dropdown-item" href="#">WIP</a>
-          <a class="dropdown-item" href="#">HELP!</a>
-          <a class="dropdown-item" href="#">DONE</a>
-        </div>
-      </div>
-        
-    
-     
+
+      <label>
+          Progress:
+          <select className="btn btn-primary m-2" progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="wip">Wip</option>
+            <option progress="stuck">Stuck</option>
+            <option progress="done">Done</option>
+          </select>
+        </label>
+
       <td className="del-cell">
         <input type="button" onClick={this.onDelEvent.bind(this)} value="X" className="del-btn"/>
       </td>
