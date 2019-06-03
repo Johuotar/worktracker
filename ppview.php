@@ -6,6 +6,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.3.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/reactstrap/8.0.0/reactstrap.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -325,8 +326,8 @@ handleAddEvent(evt) {
     id: id,
     name: "",
     Task: "",
-    Status: "",
-   Date: ""
+    
+    Date: ""
   }
   this.state.products.push(product);
   this.setState(this.state.products);
@@ -406,6 +407,8 @@ render() {
             <th>Task</th>
             <th>Date</th>
             <th>Status</th>
+            <th>PP</th>
+    
           </tr>
         </thead>
 
@@ -415,6 +418,7 @@ render() {
         </tbody>
 
       </table>
+      
     </div>
   );
 
@@ -423,9 +427,19 @@ render() {
 }
 
 class ProductRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state =
+    {progress: ''}
+    this.handleChange = this.handleChange.bind(this);
+  }
+handleChange(event) {
+    this.setState({name: event.target.name});
+  }
 onDelEvent() {
-  this.props.onDelEvent(this.props.product);
-
+  if (window.confirm("This will delete a row!")) { 
+    this.props.onDelEvent(this.props.product);
+  }
 }
 render() {
 
@@ -446,11 +460,28 @@ render() {
         value: this.props.product.qty,
         id: this.props.product.id
       }}/>
-      <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
-        type: "Status",
-        value: this.props.product.Status,
-        id: this.props.product.id
-      }}/>
+      <td>
+        <label>
+          <select className="btn btn-primary m-2" progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="wip">Wip</option>
+            <option progress="stuck">Stuck</option>
+            <option progress="done">Done</option>
+          </select>
+        </label>
+      </td>
+
+      <td>
+        <label>
+          <select className="btn btn-primary m-2" progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="wip">Wip</option>
+            <option progress="stuck">Stuck</option>
+            <option progress="done">Done</option>
+          </select>
+        </label>
+      </td>
+
       <td className="del-cell">
         <input type="button" onClick={this.onDelEvent.bind(this)} value="X" className="del-btn"/>
       </td>
