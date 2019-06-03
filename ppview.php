@@ -413,6 +413,8 @@ render() {
             <th>Name</th>
             <th>Task</th>
             <th>Date</th>
+            <th>Status</th>
+            <th>PP</th>
     
           </tr>
         </thead>
@@ -442,8 +444,9 @@ handleChange(event) {
     this.setState({name: event.target.name});
   }
 onDelEvent() {
-  this.props.onDelEvent(this.props.product);
-
+  if (window.confirm("This will delete a row!")) { 
+    this.props.onDelEvent(this.props.product);
+  }
 }
 render() {
 
@@ -464,9 +467,8 @@ render() {
         value: this.props.product.qty,
         id: this.props.product.id
       }}/>
-
-      <label>
-          Progress:
+      <td>
+        <label>
           <select className="btn btn-primary m-2" progress={this.state.progress} onChange={this.handleChange}>
             <option progress="assigned">Assigned</option>
             <option progress="wip">Wip</option>
@@ -474,6 +476,18 @@ render() {
             <option progress="done">Done</option>
           </select>
         </label>
+      </td>
+
+      <td>
+        <label>
+          <select className="btn btn-primary m-2" progress={this.state.progress} onChange={this.handleChange}>
+            <option progress="assigned">Assigned</option>
+            <option progress="wip">Wip</option>
+            <option progress="stuck">Stuck</option>
+            <option progress="done">Done</option>
+          </select>
+        </label>
+      </td>
 
       <td className="del-cell">
         <input type="button" onClick={this.onDelEvent.bind(this)} value="X" className="del-btn"/>
