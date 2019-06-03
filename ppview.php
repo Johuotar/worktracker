@@ -20,13 +20,6 @@
 <!-- logout-toiminnallisuus -->
 <a href="logout.php" class="logout">Kirjaudu ulos</a>
 
-<!-- sosiaalisen median linkit -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<a href="https://www.facebook.com" class="fa fa-facebook"></a>
-<a href="https://www.twitter.com" class="fa fa-twitter"></a>
-<a href="https://www.linkedin.com" class="fa fa-linkedin"></a>
-
 <div class="form-popup" id="AddEmployeeForm">
   <form action="/action_page.php" class="form-container">
     <h1>Add New Employee Account</h1>
@@ -496,11 +489,8 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <script src="view.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- sosiaalisen median linkit -->
 <div class="footer">
-
-
-  <!-- <h3>Copywrite@WorkTracker</h3> -->
-  <!-- sosiaalisen median linkit -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <a href="https://www.facebook.com" class="fa fa-facebook"></a>
 <a href="https://www.twitter.com" class="fa fa-twitter"></a>
