@@ -487,7 +487,6 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 </script>
 
 <script src="view.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- sosiaalisen median linkit -->
 <div class="footer">
