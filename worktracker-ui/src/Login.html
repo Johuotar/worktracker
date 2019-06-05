@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>WorkTracker</title>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- sivun koko muuttuu ruudun mukaan -->
+
+    <script src="Login.css"></script>
+</head>
+
+<body>
+
+    <h2>WorkTracker - Log in</h2>
+
+   <form action="login.js" method="POST">
+        <!-- linkki tietokantaan -->
+
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Login</button>
+                 <!-- kun login täyttää vaatimukset, linkkaus view.html -->
+               
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            Contact administration for account
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+
+</body>
+</html>
+     
+     
+      
