@@ -33,11 +33,11 @@ $_SESSION['asiakas_nimi']=$row['nimi'];
 $_SESSION['rooli_ID']=$row['rooliID'];
 $_SESSION['rooli']=$row['rooli'];
 
-if ($row['rooli']=='Projektipäällikkö')
+if ($row['rooli']=='Projektipaallikko')
 {
     header("location: ppview.php");  
 }
-elseif($row['rooli']=='Työntekijä')
+elseif($row['rooli']=='Tyontekija')
 {
     header("location: ttview.php");  
 }

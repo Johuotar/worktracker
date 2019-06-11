@@ -65,3 +65,47 @@ WHERE a.asiakasID=b.asiakasID
 and a.asiakasID=e.asiakasID
 ;
 
+
+
+/*  2019-06-11 */
+/* ei kayteta skandeja roolien koodauksessa */
+UPDATE `rooli` 
+SET `rooli`='Projektipaallikko'
+WHERE `rooliID`=1;
+
+UPDATE `rooli` 
+SET `rooli`='Tyontekija'
+WHERE `rooliID`=2;
+
+
+
+/* tarkennetaan PP:n projektien hakua, Omassa vastuussa */
+const sqlLause1 = "SELECT aa.* FROM projekti aa
+	 inner join henkilo a on (aa.henkiloId=a.henkiloId)
+         inner join asiakas b on (a.asiakasID=b.asiakasID)
+         inner join henkilonRooli c on (a.henkiloId=c.henkiloId)
+         inner join rooli e on (c.rooliId=e.rooliId)
+         where b.tyyppi='O' 
+         and e.rooli='Projektipaallikko' 
+	 and a.henkiloID=1" + connection.escape(henkiloID);
+	 and a.asiakasID=1
+
+
+
+
+Oma henkilöstö
+Projektipäälliköt
+
+const sqlLausePPaallikot = "SELECT a.henkiloId, concat(a.sukunimi, ' ', a.etunimi) as Nimi"
+         + " FROM henkilo a" 
+         + " inner join asiakas b on (a.asiakasID=b.asiakasID)"
+         + " inner join henkilonRooli c on (a.henkiloId=c.henkiloId)"
+         + " inner join rooli e on (c.rooliId=e.rooliId)"
+         + " where b.tyyppi='O'" 
+         + " and e.rooli='Projektipaallikko'"
+	 + " and a.asiakasID="  + connection.escape(asiakasID)
+	 + " and exists(select 1 from henkilo aa where a.asiakasID=aa.asiakasID and a.henkiloId=" + connection.escape(henkiloID) + '")"
+         ;
+
+
+
